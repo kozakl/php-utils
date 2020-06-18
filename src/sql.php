@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils\sql;
+
 function prepare($sql, $values)
 {
     foreach ($values as $name => $value) {

@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils;
+
 class UploadedImage
 {
     public $name;

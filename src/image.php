@@ -1,5 +1,7 @@
 <?php
-require_once './file.php';
+namespace kozakl\utils\image;
+use function
+    kozakl\utils\file\pathJoin;
 
 function makeImageSet($imageSet)
 {
