@@ -10,6 +10,17 @@
     }
   ],
   "autoload": {
-    "files": ["src/"]
+    "files": [
+      "src/convertTypes.php",
+      "src/file.php",
+      "src/image.php",
+      "src/math.php",
+      "src/net.php",
+      "src/normalize.php",
+      "src/quote.php",
+      "src/sql.php",
+      "src/string.php",
+      "src/UploadedImage.php"
+    ]
   }
 }
