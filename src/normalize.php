@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils;
+
 function normalize($rows)
 {
     $normalized = [

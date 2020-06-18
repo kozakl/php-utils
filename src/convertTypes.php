@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils;
+
 function convertTypes($schema, $rows)
 {
     if (isset($rows[0])) {

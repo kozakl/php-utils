@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils;
+
 function quote($obj)
 {
     if (is_array($obj)) {

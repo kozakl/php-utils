@@ -1,4 +1,6 @@
 <?php
+namespace kozakl\utils\string;
+
 function removeFrom($str, $search,
                     $offsetRemove = 0,
                     $offsetSearch = 0) {
