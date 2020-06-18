@@ -1,0 +1,6 @@
+# Dependencies
+vendor/
+
+# Others
+.idea/
+TODO.txt
