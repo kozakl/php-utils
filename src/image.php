@@ -5,7 +5,7 @@ use function
 
 function makeImageSet($imageSet)
 {
-    $image = new Imagick($imageSet->src);
+    $image = new \Imagick($imageSet->src);
     $srcInfo = pathinfo($imageSet->src);
     $srcName = $srcInfo['filename'];
     $srcExt = $srcInfo['extension'];
@@ -23,10 +23,10 @@ function makeImageSet($imageSet)
         $size['value'] &&
             $image->thumbnailImage($size['value'], 0);
         $size['colors'] &&
-            $image->quantizeImage($size['colors'], Imagick::COLORSPACE_SRGB, 0, false, false);
+            $image->quantizeImage($size['colors'], \Imagick::COLORSPACE_SRGB, 0, false, false);
         $size['blur'] &&
             $image->blurImage(0, $size['blur']);
-        $image->setImageCompression(Imagick::COMPRESSION_LZW);
+        $image->setImageCompression(\Imagick::COMPRESSION_LZW);
         $image->setImageCompressionQuality($imageSet->quality);
         $image->writeImage($dest);
     }
