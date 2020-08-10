@@ -1,7 +1,7 @@
 <?php
 namespace kozakl\utils;
 
-function normalize($rows)
+function normalize($rows, $extra = null)
 {
     $normalized = [
         'byId' => [],
@@ -11,5 +11,8 @@ function normalize($rows)
         $normalized['byId'][$value['id']] = $value;
         $normalized['all'][] = +$value['id'];
     }
+    
+    $extra &&
+        $normalized = array_merge($normalized, $extra);
     return $normalized;
 }
