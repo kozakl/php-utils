@@ -20,7 +20,8 @@
       "src/quote.php",
       "src/sql.php",
       "src/string.php",
-      "src/UploadedImage.php"
+      "src/UploadedImage.php",
+      "src/video.php"
     ]
   }
 }
