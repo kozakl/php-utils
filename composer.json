@@ -1,6 +1,6 @@
 {
   "name": "kozakl/utils",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "license": "MIT",
   "authors": [
     {
@@ -20,7 +20,8 @@
       "src/quote.php",
       "src/sql.php",
       "src/string.php",
-      "src/UploadedImage.php"
+      "src/UploadedImage.php",
+      "src/video.php"
     ]
   }
 }
