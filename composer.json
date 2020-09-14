@@ -14,6 +14,7 @@
       "src/convertTypes.php",
       "src/file.php",
       "src/image.php",
+      "src/json.php",
       "src/math.php",
       "src/net.php",
       "src/normalize.php",
