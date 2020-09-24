@@ -19,6 +19,7 @@
       "src/net.php",
       "src/normalize.php",
       "src/quote.php",
+      "src/slugify.php",
       "src/sql.php",
       "src/string.php",
       "src/UploadedImage.php",
