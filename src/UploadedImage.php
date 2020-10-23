@@ -11,7 +11,7 @@ class UploadedImage
      * @param
      * @throws
      */
-    public function __construct($image)
+    public function __construct($image, $uniqid = true)
     {
         if (!$image) {
             throw new Exception('Image cannot be null');
@@ -19,7 +19,9 @@ class UploadedImage
             throw new Exception('Image cannot be uploaded');
         }
         $this->image = $image;
-        $this->name = uniqid() . '__' .
+        $this->name = $uniqid ?
+            uniqid() . '__' .
+            $image->getClientFilename() :
             $image->getClientFilename();
         $this->nameEncoded = rawurlencode($this->name);
         $this->size = getimagesize($image->file);
