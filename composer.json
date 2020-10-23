@@ -23,6 +23,7 @@
       "src/sql.php",
       "src/string.php",
       "src/UploadedImage.php",
+      "src/UploadedVideo.php",
       "src/video.php"
     ]
   }
