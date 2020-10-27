@@ -15,7 +15,10 @@ function resizeVideo($data, $log)
     $log->info('FFmpeg',
         (array)shell_exec("ffmpeg "
             .join(' ', $options) .
-            " -y -an -vcodec libx264 '$data->dest' 2>&1"));
+            ($data->image ?
+                ' -vframes 1' :
+                ' -vcodec libx264') . 
+            " -y -an  '$data->dest' 2>&1"));
     if (!filesize("$data->dest")) {
         unlink("$data->dest");
     }
