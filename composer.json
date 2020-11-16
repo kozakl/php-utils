@@ -1,6 +1,6 @@
 {
   "name": "kozakl/utils",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "license": "MIT",
   "authors": [
     {
@@ -14,7 +14,6 @@
       "src/convertTypes.php",
       "src/file.php",
       "src/image.php",
-      "src/json.php",
       "src/math.php",
       "src/net.php",
       "src/normalize.php",
