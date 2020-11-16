@@ -26,3 +26,7 @@ function delete($path)
     closedir($dir);
     rmdir($path);
 }
+
+function removeExtension($filename) {
+    return substr($filename, 0, strrpos($filename, '.'));
+}
