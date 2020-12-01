@@ -12,6 +12,5 @@ function slugify($text)
     // remove duplicate -
     $text = preg_replace('~-+~', '-', $text);
     $text = strtolower($text);
-    
     return $text;
 }
