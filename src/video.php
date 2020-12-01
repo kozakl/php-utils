@@ -1,6 +1,17 @@
 <?php
 namespace kozakl\utils\video;
 
+/**
+ * @param {
+ *  src
+ *  dest
+ *  image
+ *  quality
+ *  start
+ *  duration
+ *  width
+ * } $data
+ */
 function resizeVideo($data, $log)
 {
     $data->width = ($data->width / 2 | 0) * 2;
