@@ -7,3 +7,7 @@ function removeFrom($str, $search,
     return substr($str, 0,
         strpos($str, $search, $offsetSearch) + $offsetRemove);
 }
+
+function startsWith($str, $search) {
+  return strpos($str, $search) === 0;
+}
