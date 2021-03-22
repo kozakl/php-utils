@@ -21,7 +21,6 @@ function makeImage($data)
         $image->quantizeImage($data->colors, \Imagick::COLORSPACE_SRGB, 0, false, false);
     $data->blur &&
         $image->blurImage(0, $data->blur);
-    
     if ($data->mark) {
         $mark = new \Imagick();
         $mark->readImage("../public/static/mark.png");
@@ -34,6 +33,7 @@ function makeImage($data)
                 break;
         }
     }
+    
     $image->setImageCompression(\Imagick::COMPRESSION_LZW);
     $image->setImageCompressionQuality($data->quality);
     $image->writeImage($data->dest);
