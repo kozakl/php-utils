@@ -24,8 +24,12 @@ function makeImage($data)
     if ($data->mark) {
         $mark = new \Imagick();
         $mark->readImage("../public/static/mark.png");
-        $mark->scaleImage($data->width * $data->mark->scale,
-                          $data->width * $data->mark->scale);
+        $mark->scaleImage(
+            min($image->getImageWidth(), $image->getImageHeight()) *
+                $data->mark->scale,
+            min($image->getImageWidth(), $image->getImageHeight()) *
+                $data->mark->scale
+        );
         switch ($data->mark->position) {
             case 'bl' :
                 $image->compositeImage($mark, \Imagick::COMPOSITE_OVER,
