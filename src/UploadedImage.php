@@ -4,33 +4,30 @@ namespace kozakl\utils;
 class UploadedImage
 {
     public $name;
-    public $nameEncoded;
+    public $url;
     public $width;
     public $height;
-    private $image;
     /**
      * @param
      * @throws
      */
-    public function __construct($image, $uniqid = true)
+    public function __construct($image, $path, $uniq = true)
     {
         if (!$image) {
             throw new Exception('Image cannot be null');
         } else if ($image->getError() !== UPLOAD_ERR_OK) {
             throw new Exception('Image cannot be uploaded');
         }
-        $size = getimagesize($image->file);
-        $this->image = $image;
-        $this->name = $uniqid ?
+        $uniqName = $uniq ?
             uniqid() . '__' .
             $image->getClientFilename() :
             $image->getClientFilename();
-        $this->nameEncoded = rawurlencode($this->name);
+        $size = getimagesize($image->file);
+        $image->moveTo("../public/uploads/{$path}/{$uniqName}");
+        
+        $this->name = $image->getClientFilename();
+        $this->url = "uploads/{$path}/" . rawurlencode($uniqName);
         $this->width = $size[0];
         $this->height = $size[1];
-    }
-    
-    public function moveTo($path) {
-        $this->image->moveTo($path);
     }
 }
