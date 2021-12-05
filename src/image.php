@@ -8,6 +8,7 @@ namespace kozakl\utils\image;
  *  quality
  *  colors
  *  blur
+ *  square
  *  width
  *  mark
  * } $data
@@ -15,7 +16,8 @@ namespace kozakl\utils\image;
 function makeImage($data)
 {
     $image = new \Imagick($data->src);
-    $data->width &&
+    $data->square ?
+        $image->thumbnailImage($data->width, $data->width, true, true) :
         $image->thumbnailImage($data->width, 0);
     $data->colors &&
         $image->quantizeImage($data->colors, \Imagick::COLORSPACE_SRGB, 0, false, false);
