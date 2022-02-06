@@ -3,4 +3,4 @@ vendor/
 
 # Others
 .idea/
-TODO.txt
+.DS_Store
