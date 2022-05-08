@@ -8,6 +8,13 @@ function removeFrom($str, $search,
         strpos($str, $search, $offsetSearch) + $offsetRemove);
 }
 
+function removeTo($str, $search,
+                  $offsetRemove = 0,
+                  $offsetSearch = 0) {
+    return substr($str,
+        strpos($str, $search, $offsetSearch) + $offsetRemove);
+}
+
 function startsWith($str, $search) {
   return strpos($str, $search) === 0;
 }
