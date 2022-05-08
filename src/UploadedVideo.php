@@ -17,7 +17,7 @@ class UploadedVideo
     {
         if (!$video) {
             throw new Exception('Video cannot be null');
-        } else if ($video->getError() !== UPLOAD_ERR_OK) {
+        } else if ($video->getError() != UPLOAD_ERR_OK) {
             throw new Exception('Video cannot be uploaded');
         }
         $videoInfo = $this->getVideoInfo($video);
