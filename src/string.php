@@ -16,5 +16,5 @@ function removeTo($str, $search,
 }
 
 function startsWith($str, $search) {
-  return strpos($str, $search) == 0;
+  return strpos($str, $search) === 0;
 }
