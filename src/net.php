@@ -1,6 +1,9 @@
 <?php
 namespace kozakl\utils\net;
 
+/**
+ * @deprecated 
+ */
 function isLocalhost() {
     return in_array(
         $_SERVER['REMOTE_ADDR'],
