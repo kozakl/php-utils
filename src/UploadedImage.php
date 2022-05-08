@@ -15,7 +15,7 @@ class UploadedImage
     {
         if (!$image) {
             throw new Exception('Image cannot be null');
-        } else if ($image->getError() != UPLOAD_ERR_OK) {
+        } else if ($image->getError() !== UPLOAD_ERR_OK) {
             throw new Exception('Image cannot be uploaded');
         }
         $uniqName = $uniq ?
