@@ -23,7 +23,7 @@ function makeImage($data)
         $image->quantizeImage($data->colors, \Imagick::COLORSPACE_SRGB, 0, false, false);
     $data->blur &&
         $image->blurImage(0, $data->blur);
-    if ($data->mark) {
+    if ($data->mark ?? false) {
         $mark = new \Imagick();
         $mark->readImage("../public/static/mark.png");
         $mark->scaleImage(
