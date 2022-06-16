@@ -18,6 +18,9 @@ class UploadedImage
         } else if ($image->getError() !== UPLOAD_ERR_OK) {
             throw new Exception('Image cannot be uploaded');
         }
+        if (!is_dir("../public/uploads/{$path}")) {
+            mkdir("../public/uploads/{$path}", 0777, true);
+        }
         $uniqName = $uniq ?
             uniqid() . '__' .
             $image->getClientFilename() :
