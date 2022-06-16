@@ -33,6 +33,9 @@ class UploadedVideo
     }
     
     public function moveTo($path) {
+        if (!is_dir("../public/uploads/{$path}")) {
+            mkdir("../public/uploads/{$path}", 0777, true);
+        }
         $this->video->moveTo($path);
     }
     
