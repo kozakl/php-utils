@@ -5,7 +5,7 @@ function convertTypes($schema, $rows)
 {
     if (isset($rows[0])) {
         foreach ($rows as $rowsKey => $rowsValue) {
-            $rows[$rowsKey] = convertRow($schema, $rows[$rowsKey]);
+            $rows[$rowsKey] = convertRow($schema, $rowsValue);
         }
         return $rows;
     } else {
