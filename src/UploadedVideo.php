@@ -4,47 +4,44 @@ namespace kozakl\utils;
 class UploadedVideo
 {
     public $name;
-    public $nameEncoded;
+    public $url;
     public $duration;
     public $width;
     public $height;
-    private $video;
     /**
      * @param
      * @throws
      */
-    public function __construct($video, $uniqid = true)
+    public function __construct($video, $path, $uniq = true)
     {
         if (!$video) {
             throw new Exception('Video cannot be null');
         } else if ($video->getError() !== UPLOAD_ERR_OK) {
             throw new Exception('Video cannot be uploaded');
         }
-        $videoInfo = $this->getVideoInfo($video);
-        $this->video = $video;
-        $this->name = $uniqid ?
-            uniqid() . '__' .
-            $video->getClientFilename() :
-            $video->getClientFilename();
-        $this->nameEncoded = rawurlencode($this->name);
-        $this->duration = $videoInfo->duration;
-        $this->width = $videoInfo->width;
-        $this->height = $videoInfo->height;
-    }
-    
-    public function moveTo($path) {
         if (!is_dir("../public/uploads/{$path}")) {
             mkdir("../public/uploads/{$path}", 0777, true);
         }
-        $this->video->moveTo($path);
+        $uniqName = $uniq ?
+            uniqid(). '__' .
+            $video->getClientFilename() :
+            $video->getClientFilename();
+        $info = $this->getVideoInfo($video->file);
+        $video->moveTo("../public/uploads/{$path}/{$uniqName}");
+        
+        $this->name = $video->getClientFilename();
+        $this->url = "uploads/{$path}/". rawurlencode($uniqName);
+        $this->duration = $info->duration;
+        $this->width = $info->width;
+        $this->height = $info->height;
     }
     
-    private function getVideoInfo($video) {
+    private function getVideoInfo($file) {
         $info = shell_exec("ffprobe \
             -v quiet \
             -print_format json \
             -show_format \
-            -show_streams '$video->file'");
+            -show_streams '$file'");
         $info = json_decode($info)->streams[0];
         return (object)[
             'duration' => $info->duration,
