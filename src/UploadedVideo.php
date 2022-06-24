@@ -1,8 +1,7 @@
 <?php
 namespace kozakl\utils;
 
-class UploadedVideo
-{
+class UploadedVideo {
     public $name;
     public $url;
     public $duration;
@@ -12,8 +11,7 @@ class UploadedVideo
      * @param
      * @throws
      */
-    public function __construct($video, $path, $uniq = true)
-    {
+    public function __construct($video, $path, $uniq = true) {
         if (!$video) {
             throw new Exception('Video cannot be null');
         } else if ($video->getError() !== UPLOAD_ERR_OK) {
