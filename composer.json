@@ -16,7 +16,6 @@
       "src/math.php",
       "src/normalize.php",
       "src/number.php",
-      "src/slugify.php",
       "src/string.php",
       "src/UploadedImage.php",
       "src/uploadedImages.php",
