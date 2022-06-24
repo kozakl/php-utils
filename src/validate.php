@@ -1,8 +1,7 @@
 <?php
 namespace kozakl\utils\validate;
 
-function validateFields($fields, $schema, $default)
-{
+function validateFields($fields, $schema, $default) {
     $result = implode(',', array_filter(
         explode(',', $fields),
         fn($key)=>
