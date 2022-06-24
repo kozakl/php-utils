@@ -22,14 +22,14 @@ class UploadedImage
             mkdir("../public/uploads/{$path}", 0777, true);
         }
         $uniqName = $uniq ?
-            uniqid() . '__' .
+            uniqid(). '__' .
             $image->getClientFilename() :
             $image->getClientFilename();
         $size = getimagesize($image->file);
         $image->moveTo("../public/uploads/{$path}/{$uniqName}");
         
         $this->name = $image->getClientFilename();
-        $this->url = "uploads/{$path}/" . rawurlencode($uniqName);
+        $this->url = "uploads/{$path}/". rawurlencode($uniqName);
         $this->width = $size[0];
         $this->height = $size[1];
     }
