@@ -1,8 +1,7 @@
 <?php
 namespace kozakl\utils;
 
-class UploadedImage
-{
+class UploadedImage {
     public $name;
     public $url;
     public $width;
@@ -11,8 +10,7 @@ class UploadedImage
      * @param
      * @throws
      */
-    public function __construct($image, $path, $uniq = true)
-    {
+    public function __construct($image, $path, $uniq = true) {
         if (!$image) {
             throw new Exception('Image cannot be null');
         } else if ($image->getError() !== UPLOAD_ERR_OK) {
