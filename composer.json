@@ -5,8 +5,7 @@
   "authors": [
     {
       "name": "Luke Kozak",
-      "email": "kozakluke@gmail.com",
-      "url": "https://github.com/kozakl"
+      "email": "kozakluke@gmail.com"
     }
   ],
   "autoload": {
