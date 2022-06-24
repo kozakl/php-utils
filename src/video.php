@@ -12,8 +12,7 @@ namespace kozakl\utils\video;
  *  width
  * } $data
  */
-function resizeVideo($data, $log)
-{
+function resizeVideo($data, $log) {
     $data->width = ($data->width / 2 | 0) * 2;
     $options = [
         "-ss $data->start",
