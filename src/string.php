@@ -4,8 +4,12 @@ namespace kozakl\utils\string;
 function removeFrom($str, $search,
                     $offsetRemove = 0,
                     $offsetSearch = 0) {
-    return substr($str, 0,
-        strpos($str, $search, $offsetSearch) + $offsetRemove);
+    $index = strpos($str, $search, $offsetSearch);
+    if ($index !== false) {
+        return substr($str, 0, $index + $offsetRemove);
+    } else {
+        return $str;
+    }
 }
 
 function removeTo($str, $search,
