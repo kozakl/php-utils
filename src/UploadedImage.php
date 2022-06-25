@@ -1,5 +1,6 @@
 <?php
 namespace kozakl\utils;
+use Exception;
 
 class UploadedImage {
     public $name;
@@ -7,8 +8,7 @@ class UploadedImage {
     public $width;
     public $height;
     /**
-     * @param
-     * @throws
+     * @throws Exception
      */
     public function __construct($image, $path, $uniq = true) {
         if (!$image) {
