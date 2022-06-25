@@ -1,5 +1,6 @@
 <?php
 namespace kozakl\utils;
+use Exception;
 
 class UploadedVideo {
     public $name;
@@ -8,8 +9,7 @@ class UploadedVideo {
     public $width;
     public $height;
     /**
-     * @param
-     * @throws
+     * @throws Exception
      */
     public function __construct($video, $path, $uniq = true) {
         if (!$video) {
