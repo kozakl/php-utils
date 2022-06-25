@@ -11,8 +11,12 @@ function removeFrom($str, $search,
 function removeTo($str, $search,
                   $offsetRemove = 0,
                   $offsetSearch = 0) {
-    return substr($str,
-        strpos($str, $search, $offsetSearch) + $offsetRemove);
+    $index = strpos($str, $search, $offsetSearch);
+    if ($index !== false) {
+        return substr($str, $index + $offsetRemove);
+    } else {
+        return $str;
+    }
 }
 
 function startsWith($str, $search) {
