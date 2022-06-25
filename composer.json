@@ -1,12 +1,11 @@
 {
   "name": "kozakl/utils",
-  "version": "3.3.1",
+  "version": "4.0.0",
   "license": "MIT",
   "authors": [
     {
       "name": "Luke Kozak",
-      "email": "kozakluke@gmail.com",
-      "url": "https://github.com/kozakl"
+      "email": "kozakluke@gmail.com"
     }
   ],
   "autoload": {
@@ -15,15 +14,18 @@
       "src/file.php",
       "src/image.php",
       "src/math.php",
-      "src/net.php",
-      "src/normalize.php",
       "src/number.php",
-      "src/slugify.php",
       "src/string.php",
       "src/UploadedImage.php",
+      "src/uploadedImages.php",
       "src/UploadedVideo.php",
+      "src/uploadedVideos.php",
       "src/validate.php",
       "src/video.php"
     ]
+  },
+  "require": {
+    "ext-imagick": "*",
+    "ext-json": "*"
   }
 }

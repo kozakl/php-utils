@@ -5,8 +5,7 @@ function pathJoin(...$paths) {
   return preg_replace('#/+#', '/', implode('/', array_filter($paths)));
 }
 
-function delete($path)
-{
+function delete($path) {
     if (!is_dir($path)) {
         if (file_exists($path)) {
             unlink($path);
