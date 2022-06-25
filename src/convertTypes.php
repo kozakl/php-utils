@@ -1,8 +1,7 @@
 <?php
 namespace kozakl\utils;
 
-function convertTypes($schema, $rows)
-{
+function convertTypes($schema, $rows) {
     if (isset($rows[0])) {
         foreach ($rows as $rowsKey => $rowsValue) {
             $rows[$rowsKey] = convertRow($schema, $rowsValue);
@@ -13,8 +12,7 @@ function convertTypes($schema, $rows)
     }
 }
 
-function convertRow($schema, $row)
-{
+function convertRow($schema, $row) {
     foreach ($row as $rowKey => $rowValue) {
         if ($schema[$rowKey] == 'json') {
             $row[$rowKey] = json_decode($rowValue);
