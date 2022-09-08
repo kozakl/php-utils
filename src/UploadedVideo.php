@@ -42,7 +42,7 @@ class UploadedVideo {
             -show_streams '$file'");
         $info = json_decode($info)->streams[0];
         return (object)[
-            'duration' => $info->duration,
+            'duration' => +$info->duration,
             'width' => $info->width,
             'height' => $info->height
         ];
