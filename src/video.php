@@ -8,6 +8,7 @@ namespace kozakl\utils\video;
  *  image
  *  quality
  *  start
+ *  end
  *  duration
  *  width
  * } $data
@@ -17,6 +18,8 @@ function resizeVideo($data, $log) {
     $options = [
         "-ss $data->start",
         "-i '$data->src'",
+        $data->end ?
+            "-to $data->end" : '',
         $data->duration ?
             "-t $data->duration" : '',
         "-crf $data->quality",
