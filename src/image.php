@@ -24,7 +24,7 @@ function makeImage($data) {
         $image->blurImage(0, $data->blur);
     if ($data->mark ?? false) {
         $mark = new \Imagick();
-        $mark->readImage("../public/static/mark.png");
+        $mark->readImage('../public/static/mark.png');
         $mark->scaleImage(
             min($image->getImageWidth(), $image->getImageHeight()) *
                 $data->mark->scale,
