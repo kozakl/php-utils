@@ -16,7 +16,6 @@
       "src/math.php",
       "src/number.php",
       "src/string.php",
-      "src/UploadedImage.php",
       "src/uploadedImages.php",
       "src/uploadedVideos.php",
       "src/validate.php",
