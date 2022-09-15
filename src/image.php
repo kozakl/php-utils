@@ -13,7 +13,7 @@ namespace kozakl\utils\image;
  *  mark
  * } $data
  */
-function makeImage($data) {
+function resizeImage($data) {
     $image = new \Imagick($data->src);
     $data->square ?
         $image->thumbnailImage($data->width, $data->width, true, true) :
