@@ -1,9 +1,7 @@
 <?php
 namespace kozakl\utils\string;
 
-function removeTo($str, $search,
-                  $offsetRemove = 0,
-                  $offsetSearch = 0) {
+function removeTo($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
     $index = strpos($str, $search, $offsetSearch);
     if ($index !== false) {
         return substr($str, $index + $offsetRemove);
@@ -12,9 +10,7 @@ function removeTo($str, $search,
     }
 }
 
-function removeFrom($str, $search,
-                    $offsetRemove = 0,
-                    $offsetSearch = 0) {
+function removeFrom($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
     $index = strpos($str, $search, $offsetSearch);
     if ($index !== false) {
         return substr($str, 0, $index + $offsetRemove);
