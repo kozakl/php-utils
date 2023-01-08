@@ -13,11 +13,13 @@ function validateFields($fields, $schema, $default) {
 function validateFilter($value, $filter, $options = []) {
     $unsetOptions = $options;
     unset($unsetOptions['default']);
-    $valid = !empty(trim($value)) ?
-        filter_var($value, $filter, [
-            'flags' => FILTER_NULL_ON_FAILURE,
-            'options' => $unsetOptions
-        ]) : null;
+    $valid =
+        !empty(trim($value)) ||
+        intval(trim($value)) == 0 ?
+            filter_var($value, $filter, [
+                'flags' => FILTER_NULL_ON_FAILURE,
+                'options' => $unsetOptions
+            ]) : null;
     if ($valid !== null) {
         return $valid;
     } else {
