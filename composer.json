@@ -11,6 +11,7 @@
   "autoload": {
     "files": [
       "src/convertTypes.php",
+      "src/date.php",
       "src/file.php",
       "src/image.php",
       "src/math.php",
