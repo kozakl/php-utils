@@ -12,7 +12,7 @@ function isEaster($date, $corpusChristi = true) {
 }
 
 function isHoliday($date) {
-    return self::isWeekend($date) ||
-           self::isEaster($date)  ||
+    return isWeekend($date) ||
+           isEaster($date)  ||
            in_array(date('m-d', strtotime($date)), self::$holidays);
 }
