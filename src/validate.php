@@ -15,7 +15,7 @@ function validateFilter($value, $filter, $options = []) {
     unset($unsetOptions['default']);
     $valid = $value !== null && (
         !empty(trim($value)) ||
-        trim($value) == 0
+        $value == 0
     ) ?
         filter_var($value, $filter, [
             'flags' => FILTER_NULL_ON_FAILURE,
