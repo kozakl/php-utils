@@ -1,4 +1,7 @@
 <?php
+namespace kozakl\utils;
+use PDO;
+
 function executeQuery($db, $query, $params, $paramTypes = []) {
     $stmt = $db->prepare($query);
     foreach ($params as $key => $value) {
