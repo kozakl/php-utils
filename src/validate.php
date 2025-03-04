@@ -2,10 +2,26 @@
 namespace kozakl\utils\validate;
 
 function validateFields($fields, $schema, $default, $implode = true) {
+    $schemaKeys = array_keys($schema);
     $result = array_filter(
         explode(',', $fields),
-        fn($key)=>
-            in_array($key, array_keys($schema))
+        fn($key) =>
+            in_array($key, $schemaKeys)
+    );
+    if (empty($result)) {
+        return $default;
+    } else {
+        return $implode ?
+            implode(',', $result) :
+            $result;
+    }
+}
+
+function validateArrayFields($fields, $schema, $default, $implode = true) {
+    $result = array_filter(
+        explode(',', $fields),
+        fn($key) =>
+            in_array($key, $schema)
     );
     if (empty($result)) {
         return $default;
