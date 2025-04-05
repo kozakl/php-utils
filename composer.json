@@ -27,6 +27,7 @@
   "require": {
     "ext-imagick": "*",
     "ext-json": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-calendar": "*"
   }
 }
