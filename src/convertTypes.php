@@ -18,8 +18,10 @@ function convertRow($schema, $row) {
     foreach ($row as $rowKey => $rowValue) {
         if ($schema[$rowKey] == 'json') {
             $row[$rowKey] = json_decode($rowValue);
-        } else {
+        } else if ($rowValue !== null) {
             $row[$rowKey] = $schema[$rowKey]($rowValue);
+        } else {
+            $row[$rowKey] = $rowValue;
         }
     }
     return $row;
