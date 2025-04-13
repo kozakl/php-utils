@@ -1,6 +1,9 @@
 <?php
 namespace kozakl\utils\validate;
 
+use function
+    kozakl\utils\string\startsWith;
+
 function validateFields($fields, $schema, $default, $implode = true) {
     $schemaKeys = array_keys($schema);
     $result = array_filter(
@@ -57,4 +60,11 @@ function validateFilter($value, $filter, $options = []) {
     } else {
         return $options['default'] ?? null;
     }
+}
+
+function validateSearchWords($request, $phrase) {
+    return startsWith($request->getParam($phrase), '#') ?
+        '#' . intval(substr($request->getParam($phrase), 1)) :
+        (empty($request->getParam($phrase)) ? null :
+            explode(' ', $request->getParam($phrase)));
 }
