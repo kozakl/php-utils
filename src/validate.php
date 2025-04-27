@@ -63,8 +63,9 @@ function validateFilter($value, $filter, $options = []) {
 }
 
 function validateSearchWords($words) {
-    return startsWith($words, '#') ?
-        '#' . intval(substr($words, 1)) :
-        (empty($words) ? null :
-            explode(' ', $words));
+    if (!empty($words)) {
+        return startsWith($words, '#') ?
+            '#'. intval(substr($words, 1)) :
+            explode(' ', $words);
+    }
 }
