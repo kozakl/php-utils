@@ -7,7 +7,7 @@ function convertTypes($schema, $rows) {
             $rows[$rowsKey] = convertRow($schema, $rowsValue);
         }
         return $rows;
-    } else if ($rows) {
+    } else if ($rows !== null) {
         return convertRow($schema, $rows);
     } else {
         return null;
