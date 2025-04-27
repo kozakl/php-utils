@@ -23,7 +23,7 @@ function startsWith($str, $search) {
   return strpos($str, $search) === 0;
 }
 
-function removePolishChars($str) {
+function removePolishChars(string $str) {
     $map = [
         'ą' => 'a', 'ć' => 'c', 'ę' => 'e', 'ł' => 'l',
         'ń' => 'n', 'ó' => 'o', 'ś' => 's', 'ź' => 'z', 'ż' => 'z',
@@ -31,4 +31,10 @@ function removePolishChars($str) {
         'Ń' => 'N', 'Ó' => 'O', 'Ś' => 'S', 'Ź' => 'Z', 'Ż' => 'Z'
     ];
     return strtr($str, $map);
+}
+
+function removeSpecialChars(string $text): string {
+    $transliterator = \Transliterator::create('Any-Latin; Latin-ASCII; [:Nonspacing Mark:] Remove; NFC;');
+    $text = $transliterator->transliterate($text);
+    return preg_replace('/[^\p{L}\p{N}\s]/u', '', $text);
 }
