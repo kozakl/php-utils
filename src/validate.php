@@ -62,9 +62,9 @@ function validateFilter($value, $filter, $options = []) {
     }
 }
 
-function validateSearchWords($request, $phrase) {
-    return startsWith($request->getParam($phrase), '#') ?
-        '#' . intval(substr($request->getParam($phrase), 1)) :
-        (empty($request->getParam($phrase)) ? null :
-            explode(' ', $request->getParam($phrase)));
+function validateSearchWords($words) {
+    return startsWith($words, '#') ?
+        '#' . intval(substr($words, 1)) :
+        (empty($words) ? null :
+            explode(' ', $words));
 }
