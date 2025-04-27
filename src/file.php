@@ -5,7 +5,7 @@ function pathJoin(...$paths) {
   return preg_replace('#/+#', '/', implode('/', array_filter($paths)));
 }
 
-function delete($path) {
+function delete(string $path) {
     if (!is_dir($path)) {
         if (file_exists($path)) {
             unlink($path);
@@ -26,6 +26,6 @@ function delete($path) {
     rmdir($path);
 }
 
-function removeExtension($filename) {
+function removeExtension(string $filename) {
     return substr($filename, 0, strrpos($filename, '.'));
 }

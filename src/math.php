@@ -1,6 +1,6 @@
 <?php
 namespace kozakl\utils\math;
 
-function clamp($current, $min, $max) {
+function clamp(float $current, float $min, float $max) {
     return max($min, min($max, $current));
 }

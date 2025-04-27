@@ -1,7 +1,7 @@
 <?php
 namespace kozakl\utils\string;
 
-function removeTo($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
+function removeTo(string $str, $search, $offsetRemove = 0, $offsetSearch = 0) {
     $index = strpos($str, $search, $offsetSearch);
     if ($index !== false) {
         return substr($str, $index + $offsetRemove);
@@ -10,7 +10,7 @@ function removeTo($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
     }
 }
 
-function removeFrom($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
+function removeFrom(string $str, string $search, $offsetRemove = 0, $offsetSearch = 0) {
     $index = strpos($str, $search, $offsetSearch);
     if ($index !== false) {
         return substr($str, 0, $index + $offsetRemove);
@@ -19,7 +19,7 @@ function removeFrom($str, $search, $offsetRemove = 0, $offsetSearch = 0) {
     }
 }
 
-function startsWith($str, $search) {
+function startsWith(string $str, string $search) {
   return strpos($str, $search) === 0;
 }
 
@@ -33,8 +33,8 @@ function removePolishChars(string $str) {
     return strtr($str, $map);
 }
 
-function removeSpecialChars(string $text): string {
+function removeSpecialChars(string $str): string {
     $transliterator = \Transliterator::create('Any-Latin; Latin-ASCII; [:Nonspacing Mark:] Remove; NFC;');
-    $text = $transliterator->transliterate($text);
-    return preg_replace('/[^\p{L}\p{N}\s]/u', '', $text);
+    $str = $transliterator->transliterate($str);
+    return preg_replace('/[^\p{L}\p{N}\s]/u', '', $str);
 }

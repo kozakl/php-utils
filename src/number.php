@@ -1,13 +1,13 @@
 <?php
 namespace kozakl\utils\number;
 
-function pad2($n) {
+function pad2(int $n) {
     if ($n < 10)
         return '0'. $n;
     return ''. $n;
 }
 
-function pad3($n) {
+function pad3(int $n) {
     if ($n < 10)
         return '00'. $n;
     else if ($n < 100)
@@ -15,7 +15,7 @@ function pad3($n) {
     return ''. $n;
 }
 
-function pad4($n) {
+function pad4(int $n) {
     if ($n < 10)
         return '000'. $n;
     else if ($n < 100)
@@ -25,7 +25,7 @@ function pad4($n) {
     return ''. $n;
 }
 
-function pad5($n) {
+function pad5(int $n) {
     if ($n < 10)
         return '0000'. $n;
     else if ($n < 100)
