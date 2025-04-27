@@ -29,6 +29,7 @@
     "ext-imagick": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "ext-calendar": "*"
+    "ext-calendar": "*",
+    "ext-intl": "*"
   }
 }
