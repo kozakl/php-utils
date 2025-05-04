@@ -36,5 +36,5 @@ function removePolishChars(string $str) {
 function removeSpecialChars(string $str): string {
     $transliterator = \Transliterator::create('Any-Latin; Latin-ASCII; [:Nonspacing Mark:] Remove; NFC;');
     $str = $transliterator->transliterate($str);
-    return preg_replace('/[^\p{L}\p{N}\s]/u', '', $str);
+    return trim($str);
 }
