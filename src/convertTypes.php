@@ -1,14 +1,17 @@
 <?php
 namespace kozakl\utils;
 
-function convertTypes($schema, $rows) {
+function convertTypes($schema, $rows, $asObject = false) {
     if (isset($rows[0])) {
         foreach ($rows as $rowsKey => $rowsValue) {
             $rows[$rowsKey] = convertRow($schema, $rowsValue);
         }
-        return $rows;
-    } else if ($rows !== null) {
-        return convertRow($schema, $rows);
+        return $asObject ?
+            (object)$rows : $rows;
+    } else if ($rows) {
+        return $asObject ?
+            (object)convertRow($schema, $rows) :
+            convertRow($schema, $rows);
     } else {
         return null;
     }
