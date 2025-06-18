@@ -38,7 +38,8 @@ function isWeekend($date) {
 }
 
 function isEaster($date, $corpusChristi = true) {
-    $easter = date('Y-m-d', easter_date(date('Y', strtotime($date))));
+    $year = date('Y', strtotime($date));
+    $easter = (new \DateTime())->setTimestamp(easter_date($year))->format('Y-m-d');
     return $date == date('Y-m-d', strtotime($easter. '+1day')) ||
         ($corpusChristi && $date == date('Y-m-d', strtotime($easter. '+60day')));
 }
