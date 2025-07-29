@@ -64,6 +64,11 @@ function validateFilter($value, $filter, $options = []) {
 
 function validateSearchWords($words) {
     if (!empty($words)) {
-        return explode(' ', $words);
+        $validated = preg_replace([
+            '/[^\p{L}0-9# ]+/u',
+            '/(?<!^)#/u',
+            '/\s+/u'
+        ], ' ', $words);
+        return explode(' ', trim($validated));
     }
 }
