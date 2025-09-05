@@ -21,6 +21,7 @@
       "src/string.php",
       "src/uploadedImages.php",
       "src/uploadedVideos.php",
+      "src/uploadFile.php",
       "src/validate.php",
       "src/video.php"
     ]
