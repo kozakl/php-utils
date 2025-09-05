@@ -1,5 +1,6 @@
 <?php
 namespace kozakl\utils;
+
 use PDO;
 
 function executeQuery($db, $query, $params, $paramTypes = []) {
