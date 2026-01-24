@@ -1,50 +1,7 @@
 <?php
 namespace kozakl\utils\validate;
 
-use function
-    kozakl\utils\string\startsWith;
-
-function validateFields($fields, $schema, $default, $implode = true) {
-    $schemaKeys = array_keys($schema);
-    $result = array_filter(
-        explode(',', $fields),
-        fn($key) =>
-            in_array($key, $schemaKeys)
-    );
-    if (empty($result)) {
-        return $default;
-    } else {
-        return $implode ?
-            implode(',', $result) :
-            $result;
-    }
-}
-
-function validateArrayFields($fields, $schema, $default, $implode = true) {
-    $result = array_filter(
-        explode(',', $fields),
-        fn($key) =>
-            in_array($key, $schema)
-    );
-    if (empty($result)) {
-        return $default;
-    } else {
-        return $implode ?
-            implode(',', $result) :
-            $result;
-    }
-}
-
-function validateSubObjectFields($fields, $columnNames) {
-    return ",json_object(". implode(',', 
-        array_map(fn($field) =>
-            "'$field', $columnNames[1].$field",
-            $fields
-        )
-    ). ") as {$columnNames[0]}";
-}
-
-function validateFilter($value, $filter, $options = []) {
+function filterValidate($value, $filter, $options = []):mixed {
     $unsetOptions = $options;
     unset($unsetOptions['default']);
     $valid = $value !== null && (
@@ -60,6 +17,39 @@ function validateFilter($value, $filter, $options = []) {
     } else {
         return $options['default'] ?? null;
     }
+}
+
+function validateFieldsByWhitelist(
+    string|array|null $fields,
+    array $whitelist,
+    ?string $default,
+    bool $implode = true):string|array|null {
+    if (!$fields) {
+        return $default;
+    } else {
+        $result = array_filter(
+            \is_array($fields) ?
+                $fields : explode(',', $fields),
+            fn($key):bool =>
+                \in_array($key, $whitelist)
+        );
+        if (empty($result)) {
+            return $default;
+        } else {
+            return $implode ?
+                implode(',', $result) :
+                $result;
+        }
+    }
+}
+
+function validateSubObjectFields($fields, $columnNames) {
+    return ",json_object(". implode(',', 
+        array_map(fn($field) =>
+            "'$field', $columnNames[1].$field",
+            $fields
+        )
+    ). ") as {$columnNames[0]}";
 }
 
 function validateSearchWords($words) {
