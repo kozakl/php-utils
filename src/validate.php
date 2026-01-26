@@ -1,21 +1,28 @@
 <?php
 namespace kozakl\utils\validate;
 
-function filterValidate($value, $filter, $options = []):mixed {
-    $unsetOptions = $options;
-    unset($unsetOptions['default']);
-    $valid = $value !== null && (
-        !empty(trim($value)) ||
-        $value == 0
-    ) ?
-        filter_var($value, $filter, [
-            'flags' => FILTER_NULL_ON_FAILURE,
-            'options' => $unsetOptions
-        ]) : null;
-    if ($valid !== null) {
-        return $valid;
-    } else {
+function filterValidate(
+    mixed $value,
+    int $filter,
+    array $options = []):mixed {
+    if (!\is_scalar($value)) {
         return $options['default'] ?? null;
+    } else {
+        $unsetOptions = $options;
+        unset($unsetOptions['default']);
+        $valid = $value !== null && (
+            !empty(trim($value)) ||
+            $value == 0
+        ) ?
+            filter_var($value, $filter, [
+                'flags' => FILTER_NULL_ON_FAILURE,
+                'options' => $unsetOptions
+            ]) : null;
+        if ($valid !== null) {
+            return $valid;
+        } else {
+            return $options['default'] ?? null;
+        }
     }
 }
 
