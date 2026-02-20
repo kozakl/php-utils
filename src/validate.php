@@ -50,6 +50,43 @@ function validateFieldsByWhitelist(
     }
 }
 
+function validateFieldsByWhitelistStrict(
+    string|array|null $fields,
+    array $whitelist,
+    array $options = []
+): string|array|null {
+
+    $default = $options['default'] ?? null;
+    $invalidError = $options['invalidError'] ?? null;
+    $requiredError = $options['requiredError'] ?? null;
+    $implode = $options['implode'] ?? true;
+
+    // brak parametru
+    if ($fields === null || $fields === '') {
+        if ($requiredError) {
+            throw new Exception($requiredError);
+        }
+        return $default;
+    }
+
+    // normalizacja inputu
+    $values = is_array($fields)
+        ? $fields
+        : array_map('trim', explode(',', $fields));
+
+    // sprawdzenie whitelisty
+    $invalid = array_diff($values, $whitelist);
+    if (!empty($invalid)) {
+        if ($invalidError) {
+            throw new \Exception($invalidError);
+        }
+        return $default; // <- fallback zawsze, jeśli brak exception
+    }
+
+    // wszystko poprawne
+    return $implode ? implode(',', $values) : $values;
+}
+
 function validateSubObjectFields($fields, $columnNames) {
     return ",json_object(". implode(',', 
         array_map(fn($field) =>
