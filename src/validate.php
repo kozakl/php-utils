@@ -127,6 +127,17 @@ function validateFieldsByWhitelistStrict(
         ? $fields
         : array_map('trim', explode(',', $fields));
 
+    // filtruj nulle i puste stringi
+    $values = array_values(array_filter($values, 'strlen'));
+
+    // pusta tablica = brak wartości
+    if (empty($values)) {
+        if ($requiredError) {
+            throw new \Exception($requiredError);
+        }
+        return $default;
+    }
+
     // sprawdzenie whitelisty
     $invalid = array_diff($values, $whitelist);
     if (!empty($invalid)) {
